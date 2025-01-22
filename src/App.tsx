@@ -1,11 +1,12 @@
+import React from "react";
 import "./App.css";
 import { Navbar } from "./components/navbar/Navbar";
 import { Button } from "./components/button/Button";
 import { TaskBoard } from "./components/tasks/task-board/TaskBoard";
 import { Modal } from "./components/modals/Modal";
-import { useModalManager } from "./hooks/useModalManager.hooks";
+import { useModalToggle } from "./context/ModalContext";
 function App() {
-  const { openModal, currentModal } = useModalManager();
+  const { openModal } = useModalToggle();
   return (
     <>
       <Navbar />
@@ -15,10 +16,7 @@ function App() {
           <Button
             variant="filled"
             icon="plus"
-            onClick={() => {
-              openModal("create-task-modal");
-              console.log(currentModal);
-            }}
+            onClick={() => openModal("create-new-task")}
           >
             Create task
           </Button>

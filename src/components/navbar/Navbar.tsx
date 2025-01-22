@@ -1,5 +1,5 @@
-import LinkedInLogo from "../../assets/linkedin.svg";
-import GithubLogo from "../../assets/github.svg";
+import LinkedInLogo from "../../../public/linkedin.svg";
+import GithubLogo from "../../../public/github.svg";
 
 export const Navbar = () => {
   return (

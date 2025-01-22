@@ -3,13 +3,17 @@ import React from "react";
 import PlusIcon from "../../../public/plus.svg";
 import SaveIcon from "../../../public/save.svg";
 import CloseIcon from "../../../public/close.svg";
+import MoreIcon from "../../../public/more.svg";
+import EditIcon from "../../../public/edit.svg";
+import DeleteIcon from "../../../public/trash.svg";
+import MoveIcon from "../../../public/arrow-up-right.svg";
 
 type ButtonProps = {
   variant: "filled" | "text";
-  icon?: "plus" | "save" | "close";
+  icon?: "plus" | "save" | "close" | "more" | "edit" | "delete" | "move";
   children?: string;
   type?: "submit" | "button";
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 export const Button: React.FC<ButtonProps> = ({
@@ -20,17 +24,26 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
 }) => {
   const getIconSrc = (
-    icon: "plus" | "save" | "close"
+    icon: "plus" | "save" | "close" | "more" | "edit" | "delete" | "move"
   ): { src: string; alt: string } => {
     switch (icon) {
       case "plus":
         return { src: PlusIcon, alt: "Icon to create task" };
-        break;
       case "save":
         return { src: SaveIcon, alt: "Icon to save changes" };
-        break;
       case "close":
         return { src: CloseIcon, alt: "Icon to close modal" };
+      case "more":
+        return { src: MoreIcon, alt: "Icon to more actions" };
+      case "edit":
+        return { src: EditIcon, alt: "Icon to edit task" };
+      case "delete":
+        return { src: DeleteIcon, alt: "Icon to delete task" };
+      case "move":
+        return {
+          src: MoveIcon,
+          alt: "Icon to move task to a different category",
+        };
       default:
         throw new Error("Unknown icon type");
     }

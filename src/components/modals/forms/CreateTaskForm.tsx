@@ -2,6 +2,9 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import { Button } from "../../button/Button";
 import { useModalToggle } from "../../../context/ModalContext";
+import { useTaskContext } from "../../../context/TaskContext";
+import { Task } from "../../../interfaces/Task.interfaces";
+import { generateTaskID } from "../../../helpers/task-id-generator.helper";
 
 interface FormValues {
   taskName: string;
@@ -11,6 +14,18 @@ interface FormValues {
 
 export const CreateTaskForm = () => {
   const { closeModal } = useModalToggle();
+  const { addTask } = useTaskContext();
+
+  const handleSubmit = (values: any): void => {
+    const task: Task = {
+      id: generateTaskID(),
+      name: values.taskName,
+      description: values.taskDescription,
+      category: values.taskCategory,
+    };
+    addTask(task);
+  };
+
   const initialValues: FormValues = {
     taskName: "",
     taskDescription: "",
@@ -23,6 +38,7 @@ export const CreateTaskForm = () => {
         console.log({ values, actions });
         actions.setSubmitting(false);
         actions.resetForm();
+        handleSubmit(values);
       }}
     >
       <Form className="max-w-full">
@@ -95,12 +111,7 @@ export const CreateTaskForm = () => {
           <Button variant="text" onClick={closeModal}>
             Close
           </Button>
-          <Button
-            type="submit"
-            variant="filled"
-            icon="plus"
-            onClick={() => console.log("mldkamldw")}
-          >
+          <Button type="submit" variant="filled" icon="plus">
             Create task
           </Button>
         </div>

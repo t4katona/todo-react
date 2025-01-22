@@ -6,11 +6,11 @@ type HeaderProps = {
   text: "Create new task" | "Edit task" | "Change category";
 };
 
-export const ModalHeader = (props: HeaderProps) => {
+export const ModalHeader: React.FC<HeaderProps> = ({ text }) => {
   const { closeModal } = useModalToggle();
   return (
     <header className="flex justify-between align-middle">
-      <h2 className="font-medium text-xl">{props.text}</h2>
+      <h2 className="font-medium text-xl">{text}</h2>
       <Button type="button" variant="text" icon="close" onClick={closeModal} />
     </header>
   );

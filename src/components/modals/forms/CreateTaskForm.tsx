@@ -9,7 +9,7 @@ interface FormValues {
   taskCategory: string;
 }
 
-export const CreateTaskForm: React.FC = () => {
+export const CreateTaskForm = () => {
   const { closeModal } = useModalToggle();
   const initialValues: FormValues = {
     taskName: "",

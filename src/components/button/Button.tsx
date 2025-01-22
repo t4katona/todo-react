@@ -12,7 +12,13 @@ type ButtonProps = {
   onClick: () => void;
 };
 
-export const Button = (props: ButtonProps) => {
+export const Button: React.FC<ButtonProps> = ({
+  variant,
+  icon,
+  children,
+  type,
+  onClick,
+}) => {
   const getIconSrc = (
     icon: "plus" | "save" | "close"
   ): { src: string; alt: string } => {
@@ -30,21 +36,21 @@ export const Button = (props: ButtonProps) => {
     }
   };
 
-  const iconDetails = props.icon ? getIconSrc(props.icon) : null;
+  const iconDetails = icon ? getIconSrc(icon) : null;
 
   return (
     <button
-      onClick={props.onClick}
-      type={props.type}
+      onClick={onClick}
+      type={type}
       className={`flex justify-between items-center gap-x-1 border-none rounded text-center no-underline cursor-pointer py-3 px-6 ${
-        props.variant === "filled"
+        variant === "filled"
           ? "text-white bg-black hover:bg-primary-hoverColor"
           : "text-black bg-transparent"
       }
       `}
     >
       {iconDetails && <img src={iconDetails?.src} alt={iconDetails?.alt} />}
-      {props.children}
+      {children}
     </button>
   );
 };

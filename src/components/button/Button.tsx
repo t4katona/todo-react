@@ -8,6 +8,7 @@ type ButtonProps = {
   variant: "filled" | "text";
   icon?: "plus" | "save" | "close";
   children?: string;
+  type?: "submit" | "button";
   onClick: () => void;
 };
 
@@ -34,11 +35,13 @@ export const Button = (props: ButtonProps) => {
   return (
     <button
       onClick={props.onClick}
+      type={props.type}
       className={`flex justify-between items-center gap-x-1 border-none rounded text-center no-underline cursor-pointer py-3 px-6 ${
         props.variant === "filled"
           ? "text-white bg-black hover:bg-primary-hoverColor"
           : "text-black bg-transparent"
-      }`}
+      }
+      `}
     >
       {iconDetails && <img src={iconDetails?.src} alt={iconDetails?.alt} />}
       {props.children}

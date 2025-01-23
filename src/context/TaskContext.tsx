@@ -1,4 +1,10 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+} from "react";
 import { Task } from "../interfaces/Task.interfaces";
 import { taskManager } from "../taskManager";
 // context
@@ -7,6 +13,7 @@ interface TaskContextProps {
   tasks: Task[];
   addTask: (task: Task) => void;
   deleteTask: (taskID: string) => void;
+  findAllTasks: () => void;
 }
 
 const TaskContext = createContext<TaskContextProps | undefined>(undefined);
@@ -16,15 +23,26 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
   const mainTaskManager = taskManager;
   const [tasks, setTasks] = useState<Task[]>([]);
 
-  const addTask = (task: Task) => {
+  const addTask = (task: Task): void => {
     mainTaskManager.createTask(task);
     setTasks([...mainTaskManager.getAllTasks()]);
   };
 
-  const deleteTask = (taskID: string) => {
+  const deleteTask = (taskID: string): void => {
     mainTaskManager.deleteTask(taskID);
     setTasks([...mainTaskManager.getAllTasks()]);
   };
+
+  const findAllTasks = (): Task[] => {
+    return mainTaskManager.getAllTasks();
+  };
+
+  // use effect
+  useEffect(() => {
+    if (tasks.length === 0) {
+      setTasks(mainTaskManager.loadData());
+    }
+  }, []);
 
   return (
     <TaskContext.Provider
@@ -32,6 +50,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
         tasks,
         addTask,
         deleteTask,
+        findAllTasks,
       }}
     >
       {children}

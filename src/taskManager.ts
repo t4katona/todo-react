@@ -1,13 +1,16 @@
 import { Task } from "./interfaces/Task.interfaces";
+import { Store } from "./store";
 
-class TaskManager {
+class TaskManager extends Store {
   tasks: Task[] = [];
+  constructor() {
+    super("tasks");
+    this.tasks = this.loadData();
+  }
 
   createTask(task: Task): void {
-    console.log("nadlwndkl");
-
     this.tasks.push(task);
-    console.log("tasks: ", this.tasks);
+    this.save(this.tasks);
   }
 
   getAllTasks(): Task[] {
@@ -16,6 +19,7 @@ class TaskManager {
 
   deleteTask(taskID: string): void {
     this.tasks = this.tasks.filter(({ id }) => id !== taskID);
+    this.save(this.tasks);
   }
 }
 

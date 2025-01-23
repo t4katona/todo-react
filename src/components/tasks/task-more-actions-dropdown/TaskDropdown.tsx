@@ -5,7 +5,7 @@ import { useTaskContext } from "../../../context/TaskContext";
 export const TaskDropdown = ({ id }: { id: string }) => {
   const { deleteTask } = useTaskContext();
   return (
-    <ul className="bg-white w-min border-mainWidth border-solid border-primary rounded absolute right-0 z-10">
+    <ul className="bg-white w-min border-mainWidth border-solid border-primary rounded absolute right-3 top-14 z-10">
       <li>
         <Button type="button" variant="text" icon="edit">
           Edit

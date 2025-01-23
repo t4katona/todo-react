@@ -35,7 +35,6 @@ export const CreateTaskForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={(values, actions) => {
-        console.log({ values, actions });
         actions.setSubmitting(false);
         actions.resetForm();
         handleSubmit(values);

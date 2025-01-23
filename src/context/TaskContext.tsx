@@ -14,6 +14,12 @@ interface TaskContextProps {
   addTask: (task: Task) => void;
   deleteTask: (taskID: string) => void;
   findAllTasks: () => void;
+  updateTask: (
+    taskID: string,
+    taskName: string,
+    taskDescription: string
+  ) => void;
+  findTask: (taskID: string) => Task;
 }
 
 const TaskContext = createContext<TaskContextProps | undefined>(undefined);
@@ -33,8 +39,20 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
     setTasks([...mainTaskManager.getAllTasks()]);
   };
 
+  const findTask = (taskID: string): Task => {
+    return mainTaskManager.findTask(taskID);
+  };
+
   const findAllTasks = (): Task[] => {
     return mainTaskManager.getAllTasks();
+  };
+
+  const updateTask = (
+    taskID: string,
+    taskName: string,
+    taskDescription: string
+  ): void => {
+    mainTaskManager.editTask(taskID, taskName, taskDescription);
   };
 
   // use effect
@@ -51,6 +69,8 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
         addTask,
         deleteTask,
         findAllTasks,
+        updateTask,
+        findTask,
       }}
     >
       {children}

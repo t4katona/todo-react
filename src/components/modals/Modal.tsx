@@ -3,6 +3,7 @@ import React from "react";
 import { ModalOverlay } from "./ModalOverlay";
 import { useModalToggle } from "../../context/ModalContext";
 import { CreateTaskForm } from "./forms/CreateTaskForm";
+import { EditTaskForm } from "./forms/EditTaskForm";
 import { ModalHeader } from "./ModalHeader";
 
 interface ModalContent {
@@ -10,25 +11,25 @@ interface ModalContent {
   body: JSX.Element;
 }
 
-const modalContent: Record<string, ModalContent> = {
-  "create-new-task": {
-    header: <ModalHeader text="Create new task" />,
-    body: <CreateTaskForm />,
-  },
-  "edit-task": {
-    header: <ModalHeader text="Edit task" />,
-    body: <CreateTaskForm />,
-  },
-  "change-category": {
-    header: <ModalHeader text="Change category" />,
-    body: <CreateTaskForm />,
-  },
-};
-
 export const Modal = () => {
-  const { currentModal, showModal } = useModalToggle();
+  const { currentModal, showModal, initTaskID } = useModalToggle();
+
+  const modalContent: Record<string, ModalContent> = {
+    "create-new-task": {
+      header: <ModalHeader text="Create new task" />,
+      body: <CreateTaskForm />,
+    },
+    "edit-task": {
+      header: <ModalHeader text="Edit task" />,
+      body: <EditTaskForm taskID={initTaskID} />,
+    },
+    "change-category": {
+      header: <ModalHeader text="Change category" />,
+      body: <CreateTaskForm />,
+    },
+  };
+
   const modal = modalContent[currentModal];
-  console.log(modal);
 
   return (
     <>

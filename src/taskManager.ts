@@ -21,6 +21,22 @@ class TaskManager extends Store {
     this.tasks = this.tasks.filter(({ id }) => id !== taskID);
     this.save(this.tasks);
   }
+
+  editTask(taskID: string, taskName: string, taskDescription: string): void {
+    const task = this.tasks.find((task) => taskID === task.id);
+    if (task) {
+      task.name = taskName;
+      task.description = taskDescription;
+    }
+  }
+
+  findTask(taskID: string): Task {
+    const task = this.tasks.find((task) => taskID === task.id);
+    if (!task) {
+      throw new Error(`Task with ID ${taskID} not found`);
+    }
+    return task;
+  }
 }
 
 export const taskManager = new TaskManager();

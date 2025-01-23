@@ -14,6 +14,7 @@ type ButtonProps = {
   children?: string;
   type?: "submit" | "button";
   onClick?: () => void;
+  className?: string;
 };
 
 export const Button: React.FC<ButtonProps> = ({
@@ -22,6 +23,7 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   type,
   onClick,
+  className,
 }) => {
   const getIconSrc = (
     icon: "plus" | "save" | "close" | "more" | "edit" | "delete" | "move"
@@ -55,12 +57,12 @@ export const Button: React.FC<ButtonProps> = ({
     <button
       onClick={onClick}
       type={type}
-      className={`flex justify-between items-center gap-x-1 border-none rounded text-center no-underline cursor-pointer py-3 px-6 ${
+      className={`w-fit flex justify-start items-center gap-x-2 border-none rounded text-center no-underline cursor-pointer py-3 px-6 ${
         variant === "filled"
           ? "text-white bg-black hover:bg-primary-hoverColor"
-          : "text-black bg-transparent"
+          : "text-black bg-transparent "
       }
-      `}
+      ${className}`}
     >
       {iconDetails && <img src={iconDetails?.src} alt={iconDetails?.alt} />}
       {children}

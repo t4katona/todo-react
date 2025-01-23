@@ -65,8 +65,8 @@ export const CreateTaskForm = () => {
               className="p-2.5 border-mainWidth border-solid border-primary rounded"
             />
           </div>
-          <div className="flex flex-col gap-2" role="group">
-            <label className="flex items-center border-mainWidth border-solid border-primary p-2.5 rounded cursor-pointer">
+          <div className="flex flex-col gap-2 md:flex-row" role="group">
+            <label className="flex items-center border-mainWidth border-solid border-primary p-2.5 rounded cursor-pointer md:w-full md:pt-4 md:pb-4">
               <Field
                 type="radio"
                 name="taskCategory"
@@ -76,7 +76,7 @@ export const CreateTaskForm = () => {
               To-Do
             </label>
 
-            <label className="flex items-center border-mainWidth border-solid border-primary p-2.5 rounded cursor-pointer">
+            <label className="flex items-center border-mainWidth border-solid border-primary p-2.5 rounded cursor-pointer md:w-full md:pt-4 md:pb-4">
               <Field
                 type="radio"
                 name="taskCategory"
@@ -86,7 +86,7 @@ export const CreateTaskForm = () => {
               In Progress
             </label>
 
-            <label className="flex items-center border-mainWidth border-solid border-primary p-2.5 rounded cursor-pointer">
+            <label className="flex items-center border-mainWidth border-solid border-primary p-2.5 rounded cursor-pointer md:w-full md:pt-4 md:pb-4">
               <Field
                 type="radio"
                 name="taskCategory"
@@ -96,7 +96,7 @@ export const CreateTaskForm = () => {
               Completed
             </label>
 
-            <label className="flex items-center border-mainWidth border-solid border-primary p-2.5 rounded cursor-pointer">
+            <label className="flex items-center border-mainWidth border-solid border-primary p-2.5 rounded cursor-pointer md:w-full md:pt-4 md:pb-4">
               <Field
                 type="radio"
                 name="taskCategory"
@@ -107,7 +107,7 @@ export const CreateTaskForm = () => {
             </label>
           </div>
         </div>
-        <div className="w-full flex justify-end items-center">
+        <div className="w-full flex justify-end items-center gap-x-2">
           <Button variant="text" onClick={closeModal}>
             Close
           </Button>

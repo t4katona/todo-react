@@ -3,6 +3,11 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        lg: "992px",
+        xl: "1200px",
+        "2xl": "1400px",
+      },
       fontFamily: {
         Roboto: ["Roboto", "serif"],
       },
@@ -12,6 +17,7 @@ export default {
         },
         secondary: {
           backgroundColor: "#cccccc47",
+          hoverColor: "#f7f7f7",
         },
         modal: {
           overlay: "#000000cc",

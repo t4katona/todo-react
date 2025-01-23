@@ -17,6 +17,7 @@ export const TaskDropdown = ({ id }: { id: string }) => {
           onClick={() => {
             openModal("edit-task", id);
           }}
+          className="w-full hover:bg-secondary-hoverColor"
         >
           Edit
         </Button>
@@ -27,6 +28,7 @@ export const TaskDropdown = ({ id }: { id: string }) => {
           variant="text"
           icon="move"
           onClick={() => openModal("change-category", id)}
+          className="w-full hover:bg-secondary-hoverColor"
         >
           Move
         </Button>
@@ -37,6 +39,7 @@ export const TaskDropdown = ({ id }: { id: string }) => {
           variant="text"
           icon="delete"
           onClick={() => deleteTask(id)}
+          className="w-full hover:bg-secondary-hoverColor"
         >
           Delete
         </Button>

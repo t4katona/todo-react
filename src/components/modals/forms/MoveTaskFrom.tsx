@@ -79,7 +79,7 @@ export const MoveTaskForm = ({ taskID }: { taskID: string }) => {
               </Field>
             </div>
           </div>
-          <div className="w-full flex justify-end items-center">
+          <div className="w-full flex justify-end items-center gap-x-2">
             <Button variant="text" onClick={closeModal}>
               Close
             </Button>

@@ -28,6 +28,7 @@ class TaskManager extends Store {
       task.name = taskName;
       task.description = taskDescription;
     }
+    this.save(this.tasks);
   }
 
   findTask(taskID: string): Task {

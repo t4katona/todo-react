@@ -60,7 +60,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
     if (tasks.length === 0) {
       setTasks(mainTaskManager.loadData());
     }
-  }, []);
+  }, [tasks]);
 
   return (
     <TaskContext.Provider

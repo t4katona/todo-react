@@ -22,7 +22,12 @@ export const TaskDropdown = ({ id }: { id: string }) => {
         </Button>
       </li>
       <li>
-        <Button type="button" variant="text" icon="move">
+        <Button
+          type="button"
+          variant="text"
+          icon="move"
+          onClick={() => openModal("change-category", id)}
+        >
           Move
         </Button>
       </li>

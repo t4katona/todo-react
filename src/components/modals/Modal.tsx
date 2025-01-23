@@ -4,6 +4,7 @@ import { ModalOverlay } from "./ModalOverlay";
 import { useModalToggle } from "../../context/ModalContext";
 import { CreateTaskForm } from "./forms/CreateTaskForm";
 import { EditTaskForm } from "./forms/EditTaskForm";
+import { MoveTaskForm } from "./forms/MoveTaskFrom";
 import { ModalHeader } from "./ModalHeader";
 
 interface ModalContent {
@@ -25,7 +26,7 @@ export const Modal = () => {
     },
     "change-category": {
       header: <ModalHeader text="Change category" />,
-      body: <CreateTaskForm />,
+      body: <MoveTaskForm taskID={initTaskID} />,
     },
   };
 

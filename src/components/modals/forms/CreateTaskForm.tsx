@@ -24,6 +24,7 @@ export const CreateTaskForm = () => {
       category: values.taskCategory,
     };
     addTask(task);
+    closeModal();
   };
 
   const initialValues: FormValues = {

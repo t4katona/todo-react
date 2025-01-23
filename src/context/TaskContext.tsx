@@ -20,6 +20,7 @@ interface TaskContextProps {
     taskDescription: string
   ) => void;
   findTask: (taskID: string) => Task;
+  updateCategory: (task: Task, newCategory: string) => void;
 }
 
 const TaskContext = createContext<TaskContextProps | undefined>(undefined);
@@ -55,12 +56,18 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
     mainTaskManager.editTask(taskID, taskName, taskDescription);
   };
 
+  const updateCategory = (task: Task, newCategory: string): void => {
+    mainTaskManager.updateCategory(task, newCategory);
+    setTasks([...mainTaskManager.getAllTasks()]);
+  };
+
   // use effect
   useEffect(() => {
     if (tasks.length === 0) {
-      setTasks(mainTaskManager.loadData());
+      const loadedTasks = mainTaskManager.loadData();
+      setTasks(loadedTasks);
     }
-  }, [tasks]);
+  }, []);
 
   return (
     <TaskContext.Provider
@@ -71,6 +78,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
         findAllTasks,
         updateTask,
         findTask,
+        updateCategory,
       }}
     >
       {children}

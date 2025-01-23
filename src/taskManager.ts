@@ -38,6 +38,15 @@ class TaskManager extends Store {
     }
     return task;
   }
+
+  updateCategory(task: Task, newCategory: string): void {
+    task.category = newCategory;
+    console.log("newCategory: " + newCategory);
+
+    console.log("updated: ", task);
+
+    this.save(this.tasks);
+  }
 }
 
 export const taskManager = new TaskManager();

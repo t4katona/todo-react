@@ -41,10 +41,6 @@ class TaskManager extends Store {
 
   updateCategory(task: Task, newCategory: string): void {
     task.category = newCategory;
-    console.log("newCategory: " + newCategory);
-
-    console.log("updated: ", task);
-
     this.save(this.tasks);
   }
 }

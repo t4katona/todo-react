@@ -40,8 +40,6 @@ export const MoveTaskForm = ({ taskID }: { taskID: string }) => {
       onSubmit={(values: FormValues, actions) => {
         actions.setSubmitting(false);
         actions.resetForm();
-        console.log("within form: ", values);
-
         updateCategory(task, values.newCategory);
         closeModal();
       }}

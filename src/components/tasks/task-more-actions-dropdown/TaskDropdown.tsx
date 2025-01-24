@@ -18,7 +18,6 @@ export const TaskDropdown = ({ id }: { id: string }) => {
         !dropdownRef.current.contains(e.target as Node)
       ) {
         setIsOpen(false);
-        console.log("nldkandlkw");
       }
     };
 

@@ -11,8 +11,8 @@ interface ModalContextType {
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
 export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
-  const [currentModal, setCurrentModal] = useState("");
-  const [showModal, setShowModal] = useState(false);
+  const [currentModal, setCurrentModal] = useState<string>("");
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [initTaskID, setInitTaskID] = useState<string>("");
 
   const openModal = (modalName: string, taskID?: string): void => {

@@ -20,7 +20,7 @@ const setColors = (category: string): string => {
     case "onHold":
       return "border-tasks-onhold-border bg-tasks-onhold-bg";
     default:
-      return "border-gray-200 bg-gray-50"; // Fallback style
+      return "border-gray-200 bg-gray-50";
   }
 };
 

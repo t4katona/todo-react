@@ -3,7 +3,7 @@ import GithubLogo from "../../../public/github.svg";
 
 export const Navbar = () => {
   return (
-    <nav className="w-full my-4 flex justify-between items-center">
+    <nav className="w-full mt-4 mb-16 flex justify-between items-center">
       <h1 className="font-medium">Todo-react</h1>
       <ul className="list-none">
         <li className="inline-block mx-1 p-2 cursor-pointer">

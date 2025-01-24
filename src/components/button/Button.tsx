@@ -57,12 +57,11 @@ export const Button: React.FC<ButtonProps> = ({
     <button
       onClick={onClick}
       type={type}
-      className={`w-fit flex justify-start items-center gap-x-2 border-none rounded text-center no-underline cursor-pointer py-3 px-6 ${
+      className={`w-fit flex justify-start items-center gap-x-2 border-none rounded text-center no-underline cursor-pointer ${
         variant === "filled"
-          ? "text-white bg-black hover:bg-primary-hoverColor"
-          : "text-black bg-transparent "
-      }
-      ${className}`}
+          ? "text-white bg-black hover:bg-primary-hoverColor py-3 px-6 "
+          : "text-black bg-transparent p-1 "
+      }${className}`}
     >
       {iconDetails && <img src={iconDetails?.src} alt={iconDetails?.alt} />}
       {children}

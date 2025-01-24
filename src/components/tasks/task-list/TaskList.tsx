@@ -15,6 +15,7 @@ export const TaskList = ({ category }: { category: string }) => {
           id={task.id}
           name={task.name}
           description={task.description}
+          category={task.category}
         />
       ))}
 

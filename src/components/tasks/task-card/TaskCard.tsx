@@ -6,14 +6,39 @@ interface TaskCardProps {
   id: string;
   name: string;
   description: string;
+  category: string;
 }
 
-export const TaskCard = ({ id, name, description }: TaskCardProps) => {
+const setColors = (category: string): string => {
+  switch (category) {
+    case "toDo":
+      return "border-tasks-todo-border bg-tasks-todo-bg";
+    case "inProgress":
+      return "border-tasks-inprogress-border bg-tasks-inprogress-bg";
+    case "completed":
+      return "border-tasks-completed-border bg-tasks-completed-bg";
+    case "onHold":
+      return "border-tasks-onhold-border bg-tasks-onhold-bg";
+    default:
+      return "border-gray-200 bg-gray-50"; // Fallback style
+  }
+};
+
+export const TaskCard = ({
+  id,
+  name,
+  description,
+  category,
+}: TaskCardProps) => {
   const [toggleDropdown, setToggleDropdown] = useState<boolean>(false);
   return (
-    <li className="w-full border-mainWidth border-solid border-primary rounded py-4 px-2 mb2 relative">
-      <header className="w-full flex justify-between align-middle">
-        <h3 className="max-w-full mb-4 w-full text-pretty">{name}</h3>
+    <li
+      className={`w-full border border-solid rounded py-4 px-2 mb-2 relative ${setColors(
+        category
+      )} border`}
+    >
+      <header className="w-full flex justify-between items-center mb-4">
+        <h3 className="max-w-full w-full text-pretty">{name}</h3>
         <Button
           type="button"
           variant="text"

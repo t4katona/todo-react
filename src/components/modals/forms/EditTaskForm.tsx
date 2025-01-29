@@ -1,9 +1,7 @@
-import React from "react";
 import { Formik, Form, Field } from "formik";
-import { useModalToggle } from "../../../context/ModalContext";
+import { useModalToggle } from "../../../hooks/use-modal-toggle.hooks";
 import { Button } from "../../button/Button";
-import { useTaskContext } from "../../../context/TaskContext";
-
+import { useTaskState } from "../../../hooks/use-task-state.hooks";
 interface FormValues {
   taskName: string;
   taskDescription: string;
@@ -12,9 +10,13 @@ interface FormValues {
 export const EditTaskForm = ({ taskID }: { taskID: string }) => {
   const { closeModal } = useModalToggle();
 
-  //update task from task context
-  const { updateTask, findTask } = useTaskContext();
-  const task = findTask(taskID);
+  const updateTask = useTaskState((state) => state.updateTask);
+  const tasks = useTaskState((state) => state.tasks);
+  const task = tasks.find((task) => task.id === taskID);
+
+  if (!task) {
+    return null;
+  }
 
   const initialValues: FormValues = {
     taskName: task.name,

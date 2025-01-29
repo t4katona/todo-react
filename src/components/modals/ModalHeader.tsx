@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../button/Button";
-import { useModalToggle } from "../../context/ModalContext";
+import { useModalToggle } from "../../hooks/use-modal-toggle.hooks";
 
 type HeaderProps = {
   text: "Create new task" | "Edit task" | "Change category";

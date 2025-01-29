@@ -1,12 +1,9 @@
-import React from "react";
 import { TaskCard } from "../task-card/TaskCard";
-import { useTaskContext } from "../../../context/TaskContext";
-
+import { useTaskState } from "../../../hooks/use-task-state.hooks";
 export const TaskList = ({ category }: { category: string }) => {
-  const { tasks } = useTaskContext();
+  const tasks = useTaskState((state) => state.tasks);
   const filteredTask = tasks.filter((task) => task.category === category);
 
-  // loop throuh the categories and list the 'category' specified tasks.
   return (
     <ul>
       {filteredTask.map((task) => (

@@ -1,10 +1,9 @@
-import React from "react";
 import "./App.css";
 import { Navbar } from "./components/navbar/Navbar";
 import { Button } from "./components/button/Button";
 import { TaskBoard } from "./components/tasks/task-board/TaskBoard";
 import { Modal } from "./components/modals/Modal";
-import { useModalToggle } from "./context/ModalContext";
+import { useModalToggle } from "./hooks/use-modal-toggle.hooks";
 function App() {
   const { openModal } = useModalToggle();
   return (

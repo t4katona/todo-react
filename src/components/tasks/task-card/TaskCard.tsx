@@ -35,7 +35,7 @@ export const TaskCard = ({
     <li
       className={`w-full border border-solid rounded py-4 px-2 mb-2 relative ${setColors(
         category
-      )} border`}
+      )} `}
     >
       <header className="w-full flex justify-between items-center mb-4">
         <h3 className="max-w-full w-full text-pretty">{name}</h3>

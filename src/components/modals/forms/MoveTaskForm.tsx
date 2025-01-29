@@ -1,8 +1,7 @@
-import React from "react";
-import { Formik, Form, Field, FieldArray } from "formik";
-import { useModalToggle } from "../../../context/ModalContext";
+import { Formik, Form, Field } from "formik";
+import { useModalToggle } from "../../../hooks/use-modal-toggle.hooks";
 import { Button } from "../../button/Button";
-import { useTaskContext } from "../../../context/TaskContext";
+import { useTaskState } from "../../../hooks/use-task-state.hooks";
 import { taskCategories } from "../../../constants/task-categories.constants";
 import { Task } from "../../../interfaces/Task.interfaces";
 
@@ -11,7 +10,6 @@ interface FormValues {
   newCategory: string;
 }
 
-// get excluded categories
 const getExcludedCategories = (task: Task): string[] => {
   const excludedCategories: string[] = taskCategories.filter(
     (category) => category !== task.category
@@ -23,9 +21,13 @@ const getExcludedCategories = (task: Task): string[] => {
 export const MoveTaskForm = ({ taskID }: { taskID: string }) => {
   const { closeModal } = useModalToggle();
 
-  //update task from task context
-  const { findTask, updateCategory } = useTaskContext();
-  const task = findTask(taskID);
+  const updateCategory = useTaskState((state) => state.updateCategory);
+  const tasks = useTaskState((state) => state.tasks);
+  const task = tasks.find((task) => task.id === taskID);
+
+  if (!task) {
+    return null;
+  }
 
   const excludedCategories = getExcludedCategories(task);
 
@@ -44,7 +46,7 @@ export const MoveTaskForm = ({ taskID }: { taskID: string }) => {
         closeModal();
       }}
     >
-      {({ values }) => (
+      {() => (
         <Form className="max-w-full">
           <div className="my-8">
             <div className="flex flex-col mb-4 ">

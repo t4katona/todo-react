@@ -1,12 +1,12 @@
 import React from "react";
 
-import PlusIcon from "../../../public/plus.svg";
-import SaveIcon from "../../../public/save.svg";
-import CloseIcon from "../../../public/close.svg";
-import MoreIcon from "../../../public/more.svg";
-import EditIcon from "../../../public/edit.svg";
-import DeleteIcon from "../../../public/trash.svg";
-import MoveIcon from "../../../public/arrow-up-right.svg";
+import PlusIcon from "../../assets/plus.svg";
+import SaveIcon from "../../assets/save.svg";
+import CloseIcon from "../../assets/close.svg";
+import MoreIcon from "../../assets/more.svg";
+import EditIcon from "../../assets/edit.svg";
+import DeleteIcon from "../../assets/trash.svg";
+import MoveIcon from "../../assets/arrow-up-right.svg";
 
 type ButtonProps = {
   variant: "filled" | "text";

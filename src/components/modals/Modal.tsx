@@ -1,10 +1,8 @@
-import React from "react";
-
 import { ModalOverlay } from "./ModalOverlay";
-import { useModalToggle } from "../../context/ModalContext";
+import { useModalToggle } from "../../hooks/use-modal-toggle.hooks";
 import { CreateTaskForm } from "./forms/CreateTaskForm";
 import { EditTaskForm } from "./forms/EditTaskForm";
-import { MoveTaskForm } from "./forms/MoveTaskFrom";
+import { MoveTaskForm } from "./forms/MoveTaskForm";
 import { ModalHeader } from "./ModalHeader";
 
 interface ModalContent {

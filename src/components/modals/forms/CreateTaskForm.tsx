@@ -1,10 +1,9 @@
-import React from "react";
 import { Formik, Form, Field } from "formik";
 import { Button } from "../../button/Button";
-import { useModalToggle } from "../../../context/ModalContext";
-import { useTaskContext } from "../../../context/TaskContext";
+import { useModalToggle } from "../../../hooks/use-modal-toggle.hooks";
 import { Task } from "../../../interfaces/Task.interfaces";
 import { generateTaskID } from "../../../helpers/task-id-generator.helper";
+import { useTaskState } from "../../../hooks/use-task-state.hooks";
 
 interface FormValues {
   taskName: string;
@@ -14,9 +13,13 @@ interface FormValues {
 
 export const CreateTaskForm = () => {
   const { closeModal } = useModalToggle();
-  const { addTask } = useTaskContext();
+  const addTask = useTaskState((state) => state.addTask);
 
-  const handleSubmit = (values: any): void => {
+  const handleSubmit = (values: {
+    taskName: string;
+    taskDescription: string;
+    taskCategory: string;
+  }): void => {
     const task: Task = {
       id: generateTaskID(),
       name: values.taskName,
@@ -38,6 +41,7 @@ export const CreateTaskForm = () => {
       onSubmit={(values, actions) => {
         actions.setSubmitting(false);
         actions.resetForm();
+
         handleSubmit(values);
       }}
     >

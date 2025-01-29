@@ -1,6 +1,4 @@
-import React from "react";
-import { useTaskContext } from "../../../context/TaskContext";
-
+import { useTaskState } from "../../../hooks/use-task-state.hooks";
 const setCategoryName = (category: string): string => {
   switch (category) {
     case "toDo":
@@ -17,7 +15,7 @@ const setCategoryName = (category: string): string => {
 };
 
 export const TaskHeader = ({ categoryName }: { categoryName: string }) => {
-  const { tasks } = useTaskContext();
+  const tasks = useTaskState((state) => state.tasks);
   const numberOfTasks: number = tasks.filter(
     (task) => categoryName === task.category
   ).length;

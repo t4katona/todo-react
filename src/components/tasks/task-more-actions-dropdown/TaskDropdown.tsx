@@ -1,13 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "../../button/Button";
-import { useTaskContext } from "../../../context/TaskContext";
-import { useModalToggle } from "../../../context/ModalContext";
+import { useTaskState } from "../../../hooks/use-task-state.hooks";
+import { useModalToggle } from "../../../hooks/use-modal-toggle.hooks";
 
 export const TaskDropdown = ({ id }: { id: string }) => {
-  const { deleteTask } = useTaskContext();
+  const deleteTask = useTaskState((state) => state.deleteTask);
   const { openModal } = useModalToggle();
 
-  // handle click outside of dropdown
   const [isOpen, setIsOpen] = useState<boolean>(true);
   const dropdownRef = useRef<HTMLUListElement | null>(null);
 

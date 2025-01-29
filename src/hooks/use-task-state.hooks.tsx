@@ -24,11 +24,11 @@ export const useTaskState = create<TaskContextProps>()(
         }));
       },
 
-      updateTask: (taskId, newTitle, newDescription) => {
+      updateTask: (taskId: string, newName: string, newDescription: string) => {
         set((state) => ({
           tasks: state.tasks.map((task) =>
             task.id === taskId
-              ? { ...task, name: newTitle, description: newDescription }
+              ? { ...task, name: newName, description: newDescription }
               : task
           ),
         }));
